@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lissam <lissam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 06:37:03 by lissam            #+#    #+#             */
-/*   Updated: 2024/10/10 12:02:34 by lissam           ###   ########.fr       */
+/*   Created: 2024/07/03 11:38:15 by lissam            #+#    #+#             */
+/*   Updated: 2024/07/03 11:38:16 by lissam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-void	cub3d(char **av)
+int	ft_atoi(char *str)
 {
-	t_data	my_data;
+	int			i;
+	int			sign;
+	long int	r;
 
-	check_map_file(av[1]);
-	init_my_data(&my_data);
-	check_map_file_content(av[1], &my_data);
-	ft_draw(&my_data);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-		print_error("Invalide number of params !!\n");
-	cub3d(av);
+	i = 0;
+	sign = 1;
+	r = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = sign * -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		r = r * 10 + (str[i] - '0');
+		i++;
+	}
+	return (r * sign);
 }

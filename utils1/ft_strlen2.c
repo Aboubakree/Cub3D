@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lissam <lissam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 06:37:03 by lissam            #+#    #+#             */
-/*   Updated: 2024/10/10 12:02:34 by lissam           ###   ########.fr       */
+/*   Created: 2024/07/03 11:38:30 by lissam            #+#    #+#             */
+/*   Updated: 2024/07/08 15:18:44 by lissam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-void	cub3d(char **av)
+int	ft_strlen2(char *str)
 {
-	t_data	my_data;
+	int	i;
+	int	j;
 
-	check_map_file(av[1]);
-	init_my_data(&my_data);
-	check_map_file_content(av[1], &my_data);
-	ft_draw(&my_data);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-		print_error("Invalide number of params !!\n");
-	cub3d(av);
+	i = 0;
+	j = 0;
+	while (str[i] == '0' && str[i] != '\0')
+		i++;
+	while (str[i] != '\0')
+	{
+		j++;
+		i++;
+	}
+	return (j);
 }

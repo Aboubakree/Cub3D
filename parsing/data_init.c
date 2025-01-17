@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lissam <lissam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 06:37:03 by lissam            #+#    #+#             */
-/*   Updated: 2024/10/10 12:02:34 by lissam           ###   ########.fr       */
+/*   Created: 2024/07/08 15:09:04 by lissam            #+#    #+#             */
+/*   Updated: 2024/10/24 09:21:13 by lissam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-void	cub3d(char **av)
+void	init_my_data(t_data *mydata)
 {
-	t_data	my_data;
+	int	i;
 
-	check_map_file(av[1]);
-	init_my_data(&my_data);
-	check_map_file_content(av[1], &my_data);
-	ft_draw(&my_data);
+	i = 0;
+	while (i < 6)
+		mydata->identifier[i++] = NULL;
+	mydata->idf_data = NULL;
+	mydata->fov = 60 * (M_PI / 180);
 }
 
-int	main(int ac, char **av)
+void	init_tmp_map(t_data *mydata, int i)
 {
-	if (ac != 2)
-		print_error("Invalide number of params !!\n");
-	cub3d(av);
+	int	j;
+
+	j = 0;
+	while (j < i)
+	{
+		mydata->tmp_map[j] = NULL;
+		j++;
+	}
 }

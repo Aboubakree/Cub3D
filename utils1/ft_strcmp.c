@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lissam <lissam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 06:37:03 by lissam            #+#    #+#             */
-/*   Updated: 2024/10/10 12:02:34 by lissam           ###   ########.fr       */
+/*   Created: 2024/07/03 11:38:26 by lissam            #+#    #+#             */
+/*   Updated: 2024/07/08 15:16:42 by lissam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-void	cub3d(char **av)
+int	ft_strcmp(char *s1, char *s2)
 {
-	t_data	my_data;
+	size_t	i;
 
-	check_map_file(av[1]);
-	init_my_data(&my_data);
-	check_map_file_content(av[1], &my_data);
-	ft_draw(&my_data);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-		print_error("Invalide number of params !!\n");
-	cub3d(av);
+	i = 0;
+	while (s1[i] != '\0' || s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
 }
